@@ -68,14 +68,14 @@ public class Player : MonoBehaviour, IActorTemplate
         }
         if (Input.GetAxisRaw("Vertical") < 0)
         {
-            if (transform.localPosition.x > -height/3f)
+            if (transform.localPosition.y > -height/3f)
             {
                 transform.localPosition += new Vector3(0,Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
             }
         }
         if (Input.GetAxisRaw("Vertical") > 0)
         {
-            if (transform.localPosition.x < -height / 2.5f)
+            if (transform.localPosition.y < height / 2.5f)
             {
                 transform.localPosition += new Vector3(0,Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
             }
