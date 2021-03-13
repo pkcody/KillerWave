@@ -13,6 +13,7 @@ public class PlayerSpawner : MonoBehaviour
     {
         //CREATE PLAYER
         actorModel = Object.Instantiate(Resources.Load("Script/ScriptableObject/Player_Default")) as SOActorModel;
+        playerShip = GameObject.Instantiate(actorModel.actor) as GameObject;
         playerShip.GetComponent<Player>().ActorStats(actorModel);
 
         //SET PLAYER UP
