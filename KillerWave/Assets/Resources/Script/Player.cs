@@ -87,6 +87,7 @@ public class Player : MonoBehaviour, IActorTemplate
     {
         if (other.tag == "Enemy")
         {
+            print("poop");
             if (health >= 1)
             {
                 if (transform.Find("energy +1(Clone)"))
