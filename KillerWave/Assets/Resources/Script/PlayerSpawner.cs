@@ -4,17 +4,35 @@ public class PlayerSpawner : MonoBehaviour
 {
     SOActorModel actorModel;
     GameObject playerShip;
+
+    bool upgradedShip = false;
     void Start()
     {
         CreatePlayer();
+        GetComponentInChildren<Player>().enabled = true;
     }
 
     void CreatePlayer()
     {
-        //CREATE PLAYER
-        actorModel = Object.Instantiate(Resources.Load("Script/ScriptableObject/Player_Default")) as SOActorModel;
-        playerShip = GameObject.Instantiate(actorModel.actor) as GameObject;
-        playerShip.GetComponent<Player>().ActorStats(actorModel);
+        //been shopping
+        if (GameObject.Find("UpgradedShip"))
+        {
+            upgradedShip = true;
+        }
+        //not shop or died
+        //default ship build
+        if(!upgradedShip || GameManager.Instance.Died)
+        {
+            GameManager.Instance.Died = false;
+            actorModel = Object.Instantiate(Resources.Load("Script/ScriptableObject/Player_Default")) as SOActorModel;
+            playerShip = GameObject.Instantiate(actorModel.actor, this.transform.position, Quaternion.Euler(270, 180, 0)) as GameObject;
+            playerShip.GetComponent<IActorTemplate>().ActorStats(actorModel);
+        }
+        else
+        {
+            Debug.Log("hi");
+            playerShip = GameObject.Find("UpgradedShip");
+        }
 
         //SET PLAYER UP
         playerShip.transform.rotation = Quaternion.Euler(0, 180, 0);

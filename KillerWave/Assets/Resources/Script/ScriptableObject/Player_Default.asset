@@ -18,5 +18,6 @@ MonoBehaviour:
   health: 1
   speed: 120
   hitPower: 1
-  actor: {fileID: 2795892595722203326, guid: 32c5c49ece682fd4c85a797a46609346, type: 3}
+  score: 0
+  actor: {fileID: 2255201358437311141, guid: afaab1e4c37b54e4c8fef340795b18b5, type: 3}
   actorsBullets: {fileID: 1704386207991531582, guid: f00702317db67d04a8cb110af1b5cd6f, type: 3}
