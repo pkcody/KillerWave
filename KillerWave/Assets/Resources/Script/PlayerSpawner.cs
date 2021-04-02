@@ -4,12 +4,11 @@ public class PlayerSpawner : MonoBehaviour
 {
     SOActorModel actorModel;
     GameObject playerShip;
-
     bool upgradedShip = false;
+  
     void Start()
     {
         CreatePlayer();
-        GetComponentInChildren<Player>().enabled = true;
     }
 
     void CreatePlayer()
@@ -30,16 +29,16 @@ public class PlayerSpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log("hi");
             playerShip = GameObject.Find("UpgradedShip");
         }
 
         //SET PLAYER UP
-        playerShip.transform.rotation = Quaternion.Euler(0, 180, 0);
+        playerShip.transform.rotation = Quaternion.Euler(270, 180, 0);
         playerShip.transform.localScale = new Vector3(60, 60, 60);
         playerShip.GetComponentInChildren<ParticleSystem>().transform.localScale = new Vector3(25, 25, 25);
         playerShip.name = "Player";
         playerShip.transform.SetParent(this.transform);
         playerShip.transform.position = Vector3.zero;
+        playerShip.GetComponent<PlayerTransition>().enabled = true;
     }
 }
